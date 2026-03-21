@@ -10,7 +10,7 @@ body {
     padding:20px;
     background-color: black;
     position: relative;
-        overflow-x: hidden;
+    overflow-x: hidden;
 }
 
     #bg-canvas {
@@ -41,7 +41,7 @@ nav {
     background: rgba(255, 255, 255, 0.06);
     -webkit-backdrop-filter: blur(80px);
     backdrop-filter: blur(80px);
-    padding: 5px 20px;
+    padding: 20px;
     border-radius: 15px;
     z-index: 1000;
     box-sizing: border-box;
@@ -395,7 +395,7 @@ nav .nav-list ul li a.active::after {
 }
 .skill-item {
     gap: 20px;
-    border: solid 2px white;
+    background-color: rgba(255, 255, 255, 0.1);
     border-radius: 15px;
     width: 200px;
     padding: 15px;
@@ -410,9 +410,8 @@ nav .nav-list ul li a.active::after {
 .skill-pic {
     text-align: center;
 }
-.fa-brands {
+.html, .css, .js, .github, .python {
     font-size: 60px;
-    color: rgb(255, 94, 0);
     display: block;
 }
 .skill-item p {
@@ -424,6 +423,9 @@ nav .nav-list ul li a.active::after {
 .skill-item:hover {
     transform: scale(1.05);
     transition: 0.5s;
+}
+.html {
+    color: orangered;
 }
 .css {
     color: rgb(0, 157, 255);
@@ -556,3 +558,496 @@ nav .nav-list ul li a.active::after {
 .certificate-section .cerificate-img img {
     width: 100%;
 }
+
+/* contact-section */
+.contact-section {
+    margin-top: 100px;
+    color: white;
+}
+.contact-section p {
+    margin: 10px 0;
+}
+.grid-contact {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    box-sizing: border-box;
+    align-items: start;
+}
+
+.contact-me-section {
+    background-color: rgba(255,255,255,0.14);
+    backdrop-filter: blur(50px);
+    padding: 25px;
+    border-radius: 10px;
+}
+.contact-me-section hr {
+    margin: 20px 0;
+}
+.contact-me-section .input-contact {
+    display: flex;
+    flex-direction: column;
+}
+.name, .email, .message  {
+    margin: 0;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    width: 90%;
+    outline: none;
+    background: transparent;
+    color: white;
+}
+.name-input, .email-input, .message-input {
+    background-color: rgba(0,0,0, 0.3);
+    backdrop-filter: blur(50px);
+    margin-bottom: 15px;
+    padding: 5px;
+    border-radius: 10px;
+}
+.name-icon, .email-icon, .message-icon {
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+}
+.input-contact .send-message {
+    background: linear-gradient(135deg, #4776E6 0%, #8E54E9 100%);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 32px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(.34,1.56,.64,1), box-shadow 0.3s ease;
+}
+
+
+.send-message::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  filter: brightness(1.25) saturate(1.4);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+.send-message:hover::before { opacity: 1; }
+
+.send-message::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+  transform: skewX(-15deg);
+  transition: left 0.5s ease;
+  z-index: 1;
+}
+
+.send-message:hover::after { left: 160%; }
+
+.send-message:hover {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 12px 32px rgba(100,60,200,0.45);
+}
+
+.send-message:active {
+  transform: scale(0.97);
+  transition: transform 0.1s;
+}
+
+/* ตัวหนังสืออยู่เหนือ effect */
+.send-message span {
+  position: relative;
+  z-index: 2;
+}
+
+.social-contact-container {
+    background-color: rgba(0,0,0, 0.3);
+    backdrop-filter: blur(50px);
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.social-contact-container div p {
+    position: absolute;
+    bottom: calc(100% + 2px); /* อยู่เหนือ button */
+    left: 50%;
+    transform: translateX(-50%); /* ดึงกลับครึ่งนึงให้ตรงกลาง */
+
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+
+    white-space: nowrap; /* ไม่ให้ขึ้นบรรทัดใหม่ */
+    background: rgba(0,0,0,0.75);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 13px;
+}
+#facebook:hover .Fb {
+    opacity: 1;
+    visibility: visible;
+}
+#ig:hover .Ig {
+    opacity: 1;
+    visibility: visible;
+}
+#line:hover .Ln {
+    opacity: 1;
+    visibility: visible;
+}
+#phone:hover .Num {
+    opacity: 1;
+    visibility: visible;
+}
+
+.social-contact-container div {
+    width: 50px;
+    position: relative;
+}
+.social-contact-container i {
+    font-size: 40px;
+}
+.facebook {
+    color: rgb(72, 72, 236);
+}
+.ig {
+    color: orangered;
+}
+.line {
+    color: rgb(173, 238, 77);
+}
+.phone {
+    color: gray;
+}
+
+/* comment section */
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #141414;
+  --surface: #1e1e1e;
+  --surface2: #272727;
+  --border: #333;
+  --text: #f0f0f0;
+  --muted: #888;
+  --grad: linear-gradient(135deg, #4776E6 0%, #8E54E9 100%);
+  --grad-glow: rgba(100, 80, 220, 0.35);
+  --yellow: #f5c518;
+}
+
+
+.panel {
+  background: var(--surface);
+  border-radius: 20px;
+  padding: 32px;
+  border: 1px solid var(--border);
+  width: 100%;
+  
+}
+
+.panel-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.panel-sub {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+/* ─── COUNT BADGE ─── */
+.count-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(71,118,230,0.15);
+  border: 1px solid rgba(71,118,230,0.3);
+  color: #7aa4f0;
+  font-size: 12px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+
+/* ─── COMMENTS LIST ─── */
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  padding-right: 4px;
+}
+
+.comments-list::-webkit-scrollbar { width: 4px; }
+.comments-list::-webkit-scrollbar-thumb { background: #3a3a3a; border-radius: 4px; }
+
+.comment-card {
+  background: var(--surface2);
+  border-radius: 14px;
+  padding: 15px;
+  display: flex;
+  gap: 12px;
+  border: 1px solid transparent;
+  transition: border-color 0.2s;
+  position: relative;
+}
+
+.comment-card .profile-user img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.name-comment p {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+/* read more btn */
+/* Add this to your existing CSS */
+.read-more-btn {
+  background: none;
+  border: none;
+  padding: 4px 0 0;
+  font-size: 12px;
+  color: #a78bfa;
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+}
+
+.name-comment {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    width: 100%;
+}
+
+.name-comment span {
+    padding: 0;
+    color: #7d7d7d;
+    margin-right: 15px;
+}
+.name-comment .rating {
+    color: rgb(228, 228, 228);
+}
+.rating-name {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.comment-card:hover { border-color: #3a3a3a; }
+
+
+
+.avatar {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 13px;
+  flex-shrink: 0;
+}
+
+.comment-body { flex: 1; min-width: 0; }
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3px;
+}
+
+.comment-name { font-size: 13px; font-weight: 600; }
+.comment-time { font-size: 11px; color: var(--muted); }
+.comment-stars { color: var(--yellow); font-size: 11px; margin-bottom: 4px; }
+.comment-text { font-size: 13px; color: #bbb; line-height: 1.5; word-break: break-word; }
+
+/* ─── DIVIDER ─── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 20px 0;
+}
+
+/* ─── STAR RATING ─── */
+.rating-label { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+
+.rating-row {
+     display: flex; 
+     gap: 4px; 
+     margin-bottom: 12px;
+     }
+.rating-row button {
+    background-color: #272727;
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+}
+.rating-row button:hover {
+    background-color: #3a3a3a;
+}
+.rating-row button.activeBTN {
+  background-color: #ffffff;
+  color: #272727;
+}
+.star-btn {
+  font-size: 22px;
+  cursor: pointer;
+  color: #3a3a3a;
+  transition: color 0.15s, transform 0.15s;
+  line-height: 1;
+  background: none; border: none;
+}
+
+.star-btn.active { color: var(--yellow); }
+.star-btn:hover { transform: scale(1.2); }
+
+/* ─── INPUTS ─── */
+.field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface2);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  border: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.field:focus-within { border-color: #7c5ce4; }
+.field-icon { font-size: 15px; color: var(--muted); flex-shrink: 0; }
+
+.field input,
+.field textarea {
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  width: 100%;
+  resize: none;
+}
+
+/* upload profile */
+
+.optional-profile {
+    color: white;
+}
+
+.upload-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 2rem;
+  background: #272727;
+  border-radius: 12px;
+  border: 0.5px solid #1E1E1E;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+input[type=file] {
+  display: none;
+}
+
+.upload-zone {
+  width: 160px;
+  height: 160px;
+  border: 1.5px dashed #aaa;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.upload-zone:hover {
+  background: #3a3a3a;
+}
+
+.upload-zone svg {
+text-align: center;  
+width: 32px;
+height: 32px;
+color: #aaa;
+}
+
+
+.upload-zone span {
+text-align: center;  
+font-size: 12px;
+color: #aaa;
+}
+
+.upload-zone img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.field input::placeholder,
+.field textarea::placeholder { color: #555; }
+
+/* ─── BUTTON ─── */
+.btn-grad {
+  width: 100%;
+  background: var(--grad);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  padding: 14px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(.34,1.56,.64,1), box-shadow 0.3s;
+  margin-top: 4px;
+}
+
+.btn-grad::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%; height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.25), transparent);
+  transform: skewX(-15deg);
+  transition: left 0.5s ease;
+}
+
+.btn-grad:hover::after { left: 160%; }
+.btn-grad:hover { transform: translateY(-3px); box-shadow: 0 10px 28px var(--grad-glow); }
+.btn-grad:active { transform: scale(0.97); }
+.btn-label { position: relative; z-index: 1; }
