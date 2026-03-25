@@ -133,8 +133,23 @@ filterButtons.forEach((button) => {
     tick();
 })();
 
+
+// toggle menu
+    document.querySelector('.bar-icon').addEventListener('click', () => {
+        const menu = document.querySelector('.js-mobile-menu');
+        const icon = document.querySelector('.bar-icon')
+        menu.classList.toggle('open');
+
+        if (menu.classList.contains('open')) {
+        icon.classList.replace('fa-bars', 'fa-xmark');
+        } else {
+        icon.classList.replace('fa-xmark', 'fa-bars');
+        }
+    })
+
+
 // navigation underline/active state handling
-(function navLinkActive() {
+function navLinkActive() {
     const links = document.querySelectorAll('nav .nav-list ul li a');
     if (!links.length) return;
 
@@ -176,7 +191,7 @@ filterButtons.forEach((button) => {
     sections.forEach(section => {
         observer.observe(section);
     });
-})();
+};
 
 
 // animate backgroud
@@ -294,26 +309,40 @@ hudEl.addEventListener('mouseleave', () => {
 // แยก function read more ออกมา
 function initReadMore() {
   document.querySelectorAll('.js-comments-list .comment-card').forEach(card => {
-    const p = card.querySelector('.name-comment p');
     
-    console.log('p:', p); // เจอ p ไหม
-    console.log('btn already:', card.querySelector('.read-more-btn')); // มี btn อยู่แล้วไหม
 
+    // read more
+    const p = card.querySelector('.name-comment p');
+    if (!p) return;
     if (card.querySelector('.read-more-btn')) return;
 
-    const btn = document.createElement('button');
-    btn.className = 'read-more-btn';
-    btn.textContent = 'read more';
+    p.style.display = '-webkit-box';
+    p.style.webkitLineClamp = '2';
+    p.style.webkitBoxOrient = 'vertical';
+    p.style.overflow = 'hidden';
 
-    p.after(btn);
-    console.log('btn added'); // btn ถูกเพิ่มไหม
+    requestAnimationFrame(() => {
+      if (p.scrollHeight <= p.clientHeight) return;
+    
+      const btn = document.createElement('button');
+      btn.className = 'read-more-btn';
+      btn.textContent = 'read more';
+      p.after(btn);
 
-    btn.addEventListener('click', () => {
-      console.log('clicked!'); // click ทำงานไหม
-      const isCollapsed = p.style.webkitLineClamp !== 'unset';
-      p.style.display = isCollapsed ? 'block' : '-webkit-box';
-      p.style.webkitLineClamp = isCollapsed ? 'unset' : '2';
-      btn.textContent = isCollapsed ? 'show less' : 'read more';
+      btn.addEventListener('click', () => {
+        const isCollapsed = p.style.webkitLineClamp !== 'unset';
+        if (isCollapsed) {
+          p.style.display = 'block';
+          p.style.webkitLineClamp = 'unset';
+          p.style.overflow = 'visible';
+          btn.textContent = 'show less';
+        } else {
+          p.style.display = '-webkit-box';
+          p.style.webkitLineClamp = '2';
+          p.style.overflow = 'hidden';
+          btn.textContent = 'read more';
+        }
+      });
     });
   });
 }
@@ -409,7 +438,7 @@ function postComment () {
 }
 
 
-// localStorage.clear()
+localStorage.clear()
 
 function saveComments() {
   const comments = document.querySelector('.js-comments-list').innerHTML;
