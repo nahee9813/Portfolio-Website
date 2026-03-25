@@ -157,6 +157,7 @@ nav .nav-list ul li a.active::after {
     text-decoration: none;
     color: white;
     font-size: 18px;
+    width: 100%;
 }
 
 .mobile-menu ul li:hover {
