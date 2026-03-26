@@ -441,7 +441,7 @@ function postComment () {
 }
 
 
-localStorage.clear()
+// localStorage.clear()
 
 function saveComments() {
   const comments = document.querySelector('.js-comments-list').innerHTML;
